@@ -1,0 +1,84 @@
+### Código JavaScript Explicado
+
+#### Linha 1-2:
+```javascript
+const form = document.getElementById('cadastroForm');
+const tabelaCorpo = document.getElementById('cadastroTableBody');
+```
+- **`const form`**: Seleciona o formulário HTML com o ID `cadastroForm` e o armazena na variável `form`. 
+- **`const tabelaCorpo`**: Seleciona o corpo da tabela (a tag `<tbody>`) com o ID `cadastroTableBody` e o armazena na variável `tabelaCorpo`.
+
+Essas duas linhas permitem que o JavaScript interaja diretamente com o formulário e a tabela no HTML.
+
+#### Linha 4:
+```javascript
+form.addEventListener('submit', function(event) {
+```
+- Adiciona um ouvinte de evento para o formulário. Isso significa que sempre que o formulário for enviado (quando o botão "Cadastrar" for clicado), a função especificada será executada.
+- **`event`** é um objeto que contém informações sobre o evento que ocorreu.
+
+#### Linha 5:
+```javascript
+    event.preventDefault();
+```
+- **`event.preventDefault();`**: Impede que o comportamento padrão de envio do formulário aconteça (que é recarregar a página). Isso permite que o JavaScript processe os dados manualmente.
+
+#### Linha 7-8:
+```javascript
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
+```
+- **`const nome`**: Pega o valor inserido no campo de texto com o ID `nome` e o armazena na variável `nome`.
+- **`const email`**: Pega o valor inserido no campo de texto com o ID `email` e o armazena na variável `email`.
+
+Essas linhas capturam os dados digitados pelo usuário no formulário.
+
+#### Linha 10:
+```javascript
+    const novaLinha = document.createElement('tr');
+```
+- **`const novaLinha`**: Cria um novo elemento de linha (`<tr>`) na tabela, que será preenchido com as informações fornecidas pelo usuário.
+
+#### Linha 12-13:
+```javascript
+    const celulaNome = document.createElement('td');
+    celulaNome.textContent = nome;
+```
+- **`const celulaNome`**: Cria uma nova célula (`<td>`) para exibir o nome na tabela.
+- **`celulaNome.textContent = nome;`**: Define o conteúdo de texto dessa célula para o valor armazenado na variável `nome`.
+
+#### Linha 14-15:
+```javascript
+    const celulaEmail = document.createElement('td');
+    celulaEmail.textContent = email;
+```
+- **`const celulaEmail`**: Cria uma nova célula (`<td>`) para exibir o email na tabela.
+- **`celulaEmail.textContent = email;`**: Define o conteúdo de texto dessa célula para o valor armazenado na variável `email`.
+
+#### Linha 17-18:
+```javascript
+    novaLinha.appendChild(celulaNome);
+    novaLinha.appendChild(celulaEmail);
+```
+- **`novaLinha.appendChild(celulaNome);`**: Adiciona a célula do nome (`celulaNome`) à nova linha (`novaLinha`) da tabela.
+- **`novaLinha.appendChild(celulaEmail);`**: Adiciona a célula do email (`celulaEmail`) à nova linha (`novaLinha`) da tabela.
+
+Isso cria uma linha completa contendo o nome e o email inseridos pelo usuário.
+
+#### Linha 20:
+```javascript
+    tabelaCorpo.appendChild(novaLinha);
+```
+- **`tabelaCorpo.appendChild(novaLinha);`**: Adiciona a nova linha criada (`novaLinha`) ao corpo da tabela (`tabelaCorpo`). Isso faz com que os dados sejam exibidos na tabela na página.
+
+#### Linha 22:
+```javascript
+    form.reset();
+```
+- **`form.reset();`**: Limpa os campos do formulário após o cadastro, preparando-os para uma nova entrada.
+
+#### Linha 23:
+```javascript
+});
+```
+- Fecha a função do evento e conclui o código de manipulação do envio do formulário.
